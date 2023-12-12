@@ -2,14 +2,12 @@ import cv2
 import serial
 import time
 
-# Bluetooth device configuration
-bluetooth_port = 'COM5'  # Replace with the COM port of your Bluetooth device
-baud_rate = 9600  # Adjust the baud rate as per your device's configuration
+bluetooth_port = 'COM5'  
+baud_rate = 9600 
 
 cam = cv2.VideoCapture(0)
 
 try:
-    # Open the serial port for communication with the Bluetooth device
     ser = serial.Serial(bluetooth_port, baud_rate)
 
     while cam.isOpened():
@@ -35,7 +33,6 @@ try:
         cv2.imshow('Motion Detection', frame1)
 
         if motion_detected:
-            # Send 'beep' signal to the Bluetooth device
             ser.write(b'beep\n')
             ser.flush()
 
@@ -43,5 +40,5 @@ try:
             break
 
 finally:
-    ser.close()  # Close the serial port
+    ser.close()
     cv2.destroyAllWindows()
