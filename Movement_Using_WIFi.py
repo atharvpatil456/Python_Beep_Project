@@ -1,8 +1,7 @@
 import cv2
 import socket
 
-
-mobile_device_ip = '192.0.0.2'    # Add Your IP here
+mobile_device_ip = '192.0.0.2'   
 port = 38246
 
 cam = cv2.VideoCapture(0)
